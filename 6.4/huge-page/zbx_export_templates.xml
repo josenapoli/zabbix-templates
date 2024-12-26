@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.4</version>
+    <template_groups>
+        <template_group>
+            <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
+            <name>Templates</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>c9ec681f14504a0684538416501bd2f6</uuid>
+            <template>Huge Page</template>
+            <name>Huge Page</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>de31f69d51854d7ca0948dd46ff8fdd2</uuid>
+                    <name>HugePages_Used</name>
+                    <type>CALCULATED</type>
+                    <key>HugePages_Used</key>
+                    <delay>30s</delay>
+                    <units>!</units>
+                    <params>last(//mem.huge.page[HugePages_Total])-last(//mem.huge.page[HugePages_Free])</params>
+                </item>
+                <item>
+                    <uuid>4150b5f8cb664c76a9608fa952adf8a9</uuid>
+                    <name>AnonHugePages</name>
+                    <key>mem.huge.page[AnonHugePages]</key>
+                    <units>b</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>27d229d90c3c4b5b8a20899f463ffcc4</uuid>
+                    <name>FileHugePages</name>
+                    <key>mem.huge.page[FileHugePages]</key>
+                    <units>b</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>8344f2b8f88442dd883dc16ab4984c49</uuid>
+                    <name>Hugepagesize</name>
+                    <key>mem.huge.page[Hugepagesize]</key>
+                    <units>b</units>
+                    <description>Es el tamaño de cada pagina grande</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>e5ea691845414687adce67dc50e63f9e</uuid>
+                    <name>HugePages_Free</name>
+                    <key>mem.huge.page[HugePages_Free]</key>
+                    <delay>30s</delay>
+                    <units>!</units>
+                    <description>El espacio total de paginas libres existentes de la pool total</description>
+                </item>
+                <item>
+                    <uuid>d11682a0d9d144d5935c1d46e10d3044</uuid>
+                    <name>HugePages_Rsvd</name>
+                    <key>mem.huge.page[HugePages_Rsvd]</key>
+                    <delay>30s</delay>
+                    <units>!</units>
+                    <description>Es el número de páginas enormes para las que se ha comprometido a asignar del grupo, aunque todavía no se ha realizado ninguna asignación. Las páginas grandes reservadas garantizan que una aplicación pueda asignar una página grande del grupo de páginas grandes en el momento de la falla.</description>
+                </item>
+                <item>
+                    <uuid>1d2df4e1add84983aee86defd319f48c</uuid>
+                    <name>HugePages_Surp</name>
+                    <key>mem.huge.page[HugePages_Surp]</key>
+                    <delay>30s</delay>
+                    <units>!</units>
+                    <description>Es la abreviatura de &quot;excedente&quot; y es la cantidad de páginas enormes en el grupo por encima del valor en /proc/sys/vm/nr_hugepages . El número máximo de páginas enormes excedentes está controlado por /proc/sys/vm/nr_overcommit_hugepages .</description>
+                </item>
+                <item>
+                    <uuid>00332d312f9b48848b1af39e4dacc878</uuid>
+                    <name>HugePages_Total</name>
+                    <key>mem.huge.page[HugePages_Total]</key>
+                    <units>!</units>
+                    <description>El espacio total otorgado al pool de hugepages</description>
+                </item>
+                <item>
+                    <uuid>cb4c708b2df0426b85a731b5f69ce997</uuid>
+                    <name>Hugetlb</name>
+                    <key>mem.huge.page[Hugetlb]</key>
+                    <units>b</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>6276985edddd4fabbc1a71a515d004b8</uuid>
+                    <name>ShmemHugePages</name>
+                    <key>mem.huge.page[ShmemHugePages]</key>
+                    <units>b</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>5488ab7130df4e53907bd727ed6a4406</uuid>
+                    <name>RamHugePages_Free</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>memmb.huge.page[HugePages_Free]</key>
+                    <delay>30s</delay>
+                    <units>b</units>
+                    <description>La memoria libre utilizada por hugepages</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>9280fad56e1a495cb49b3345e5ea7fd9</uuid>
+                    <name>RamHugePages_Total</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>memmb.huge.page[HugePages_Total]</key>
+                    <units>b</units>
+                    <description>La memoria total utilizada por hugepages</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1000</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>cf06a98123074520b14f735944e3fbb7</uuid>
+                    <name>RamHugePages_Used</name>
+                    <type>CALCULATED</type>
+                    <key>RamHugePages_Used</key>
+                    <delay>30s</delay>
+                    <units>b</units>
+                    <params>(last(//memmb.huge.page[HugePages_Total])-last(//memmb.huge.page[HugePages_Free]))</params>
+                </item>
+            </items>
+            <dashboards>
+                <dashboard>
+                    <uuid>2685f8c928944c95b47abd72395dff98</uuid>
+                    <name>Huge Page</name>
+                    <pages>
+                        <page>
+                            <widgets>
+                                <widget>
+                                    <type>graph</type>
+                                    <width>12</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>GRAPH</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Huge Page</host>
+                                                <name>Count Huge Page</name>
+                                            </value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                                <widget>
+                                    <type>graph</type>
+                                    <y>5</y>
+                                    <width>12</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>GRAPH</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Huge Page</host>
+                                                <name>Mem Huge Page</name>
+                                            </value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                                <widget>
+                                    <type>graph</type>
+                                    <x>12</x>
+                                    <width>12</width>
+                                    <height>5</height>
+                                    <fields>
+                                        <field>
+                                            <type>GRAPH</type>
+                                            <name>graphid</name>
+                                            <value>
+                                                <host>Huge Page</host>
+                                                <name>Ram Mem Huge Page</name>
+                                            </value>
+                                        </field>
+                                    </fields>
+                                </widget>
+                            </widgets>
+                        </page>
+                    </pages>
+                </dashboard>
+            </dashboards>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <uuid>6c162b6598004c72b4f3d4da60916bc7</uuid>
+            <expression>(last(/Huge Page/mem.huge.page[HugePages_Free]))&lt;(last(/Huge Page/mem.huge.page[HugePages_Total])*0.1)</expression>
+            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+            <recovery_expression>(last(/Huge Page/mem.huge.page[HugePages_Free]))&gt;(last(/Huge Page/mem.huge.page[HugePages_Total])*0.1)</recovery_expression>
+            <name>Count Huge Page Free &lt; 10%</name>
+            <priority>HIGH</priority>
+        </trigger>
+    </triggers>
+    <graphs>
+        <graph>
+            <uuid>d6e974b071114ac4bcd4650a733457fb</uuid>
+            <name>Count Huge Page</name>
+            <graph_items>
+                <graph_item>
+                    <color>0040FF</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>mem.huge.page[HugePages_Total]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>80FF00</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>mem.huge.page[HugePages_Free]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>FF8000</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>HugePages_Used</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <color>FC6EA3</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>mem.huge.page[HugePages_Rsvd]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>4</sortorder>
+                    <color>6C59DC</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>mem.huge.page[HugePages_Surp]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <uuid>0c0a106fe10d4003930ffce0033e5c8a</uuid>
+            <name>Mem Huge Page</name>
+            <graph_items>
+                <graph_item>
+                    <color>1A7C11</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>mem.huge.page[AnonHugePages]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>F63100</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>mem.huge.page[FileHugePages]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>2774A4</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>mem.huge.page[Hugepagesize]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <color>FC6EA3</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>mem.huge.page[ShmemHugePages]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <uuid>a2d9424ef6a041599dbb24860ba7e155</uuid>
+            <name>Ram Mem Huge Page</name>
+            <graph_items>
+                <graph_item>
+                    <drawtype>FILLED_REGION</drawtype>
+                    <color>00FF00</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>memmb.huge.page[HugePages_Total]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>FILLED_REGION</drawtype>
+                    <color>FF0000</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Huge Page</host>
+                        <key>RamHugePages_Used</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
