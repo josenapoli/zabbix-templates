@@ -1,5 +1,7 @@
 Requerimientos:
 
+Instalar agente de zabbix en el servidor linux
+
 > nano /etc/sudoers.d/zabbix-agent
 
 zabbix ALL = NOPASSWD: /usr/local/bin/count_close_wait.sh
