@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.4</version>
+    <template_groups>
+        <template_group>
+            <uuid>dc579cd7a1a34222933f24f52a68bcd8</uuid>
+            <name>Linux servers</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>cfe085c12c574c879bd4b5ffdbe0b23e</uuid>
+            <template>ConexionesAbiertas</template>
+            <name>ConexionesAbiertas</name>
+            <groups>
+                <group>
+                    <name>Linux servers</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>787390ef7cae4e049cad2caa1cd7593c</uuid>
+                    <name>Contar CLOSE_WAIT</name>
+                    <key>system.run[sudo /usr/local/bin/count_close_wait.sh]</key>
+                    <units>!</units>
+                    <description>Contador de conexiones que no finalizaron correctamente. Requiere aplicarse un reinicio hasta tanto Fast resuelva el problema</description>
+                    <triggers>
+                        <trigger>
+                            <uuid>4fa8111339314edda07a47d2e8472ff9</uuid>
+                            <expression>last(/ConexionesAbiertas/system.run[sudo /usr/local/bin/count_close_wait.sh],#5)&gt;100</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/ConexionesAbiertas/system.run[sudo /usr/local/bin/count_close_wait.sh])&lt;100</recovery_expression>
+                            <name>Mas de 100 conexiones en estado CLOSE_WAIT</name>
+                            <priority>WARNING</priority>
+                            <description>Se detectaron mas de 100 conexiones que no finalizaron correctamente. Requiere aplicarse un reinicio hasta tanto Fast resuelva el problema</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>
